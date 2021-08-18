@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - isground
+  - PlayerAtt1
+  - PlayerAtt2
+  - PlayerAtt3
+  - "\u885D\u649E"
+  - "\u8E22\u64CA"
+  - "\u63EE\u64CA"
+  - ' Novice teaching'
+  - "\u7246\u58C1"
+  - "\u602A\u7269"
+  - "\u968E\u68AF"
+  - "Boss\u53D7\u50B7"
+  - "Boss\u5782\u5730"
+  - "Boss\u63EE\u64CA"
+  - HpBall
+  - Boss
+  - Fx
+  - "\u6A4B"
+  - BossSkillStone
+  - Music
+  - Door
+  - "\u5CA9\u6F3F"
+  - Wall
+  - PlayerAttack
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - DontReviseCamera
+  - Ground
+  - PostProcessing
+  - Attack
+  - HitTrigger
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
