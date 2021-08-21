@@ -23,6 +23,7 @@ public class HitController : MonoBehaviour
             return;
 
         characterBase cb = GM_Level.characterBaseDictionary[other.gameObject.transform.parent.gameObject];
+        if (cb == null) cb = gameObject.GetComponentInParent<characterBase>();
         if (cb != null)
         {
             float damage = mycharacter == null ? attack : mycharacter.DamageValue(AttackMultiple);

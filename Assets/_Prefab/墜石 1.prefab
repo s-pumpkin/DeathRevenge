@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4998167088654228}
   - component: {fileID: 198441961690719742}
   - component: {fileID: 199688736584561608}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\u9695\u77F3\u5C3E\u5DF4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4869,7 +4869,7 @@ GameObject:
   - component: {fileID: 114846784078994360}
   - component: {fileID: 82048675688124494}
   - component: {fileID: 5709861568499326034}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\u589C\u77F3 1"
   m_TagString: BossSkillStone
   m_Icon: {fileID: 0}

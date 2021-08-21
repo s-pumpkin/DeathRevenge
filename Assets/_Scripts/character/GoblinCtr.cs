@@ -377,7 +377,8 @@ public class GoblinCtr : characterBase
         _AudioSource.volume = _AudioVul * 播放聲音比;
         _AudioSource.PlayOneShot(_DeadAudio);
         animator.SetTrigger("Dead");
-        LevelCtr.instance.RemoveMonster(this.gameObject);
+        if (LevelCtr.instance != null)
+            LevelCtr.instance.RemoveMonster(this.gameObject);
         Destroy(gameObject, 5.0f);
     }
 
