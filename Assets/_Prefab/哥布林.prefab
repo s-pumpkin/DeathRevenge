@@ -4526,25 +4526,27 @@ MonoBehaviour:
   HpMax: 500
   PatrolTrPosA: {fileID: 0}
   PatrolTrPosB: {fileID: 0}
-  "\u8DDD\u96E21": 45
+  checkPlayerDistance: 0
+  distance: 0
+  CheckbumpDistance: 100
   "\u885D\u649ECD": 60
   "\u885D\u649E\u901F\u5EA6": 0.3
   "\u885D\u649EObject": {fileID: 1552128676252096}
-  "\u885D\u649E\u767C\u52D5\u6A5F\u7387": 0
-  "\u63EE\u64CA\u8DDD\u96E2": 5.5
-  "\u662F\u5426\u5DE1\u908F": 1
+  BumpProbability: 40
+  SwingDistance: 0
+  goblinState: 1
+  isPatrol: 1
   "\u662F\u5426\u4F7F\u7528\u885D\u649E": 0
   "\u662F\u5426\u8FFD\u73A9\u5BB6": 1
   isDetectedPlayer: 0
   bloodEffect: {fileID: 100024, guid: de670bf93ae4bb04bbfb3e04751e679d, type: 3}
   _ReHpBall: {fileID: 1617481073320506, guid: 4d72a4ceba550bc42a5d36ae0e9e848d, type: 3}
-  goblinState: 1
+  goblinAnimState: 0
   _AudioSource: {fileID: 82032902860200388}
   _AttAudio: {fileID: 8300000, guid: 798780668fbdb6b45af010f3cd1ff512, type: 3}
   "_\u88AB\u6253\u64CA\u8072\u97F3": {fileID: 8300000, guid: c02faf67a4c62a54aa4be7987c1e920e,
     type: 3}
   _DeadAudio: {fileID: 8300000, guid: 1463f9a5b822ac8498f77c62532fcf70, type: 3}
-  "\u64AD\u653E\u8072\u97F3\u6BD4": 0.25
   "\u885D\u523A\u7279\u6548": {fileID: 0}
 --- !u!195 &195672005631910830
 NavMeshAgent:
@@ -4576,7 +4578,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934141832588322}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 100
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
