@@ -4505,7 +4505,7 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: e1c0dbcfe3f4e164a8bcd60899f22c85, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.8123702
+  m_Radius: 1.1
   m_Height: 3.5999997
   m_Direction: 1
   m_Center: {x: 0, y: 1.5579761, z: -0.01}
@@ -4526,28 +4526,29 @@ MonoBehaviour:
   HpMax: 500
   PatrolTrPosA: {fileID: 0}
   PatrolTrPosB: {fileID: 0}
-  checkPlayerDistance: 0
-  distance: 0
-  CheckbumpDistance: 100
+  checkPlayerDistance: 80
+  CanBump: 1
+  CanRunPlayer: 1
+  goblinState: 0
+  isIdel: 0
+  SwingDistance: 5
+  CheckbumpDistance: 60
   "\u885D\u649ECD": 60
-  "\u885D\u649E\u901F\u5EA6": 0.3
+  BumpSpeed: 5
   "\u885D\u649EObject": {fileID: 1552128676252096}
   BumpProbability: 40
-  SwingDistance: 0
-  goblinState: 1
-  isPatrol: 1
-  "\u662F\u5426\u4F7F\u7528\u885D\u649E": 0
-  "\u662F\u5426\u8FFD\u73A9\u5BB6": 1
   isDetectedPlayer: 0
   bloodEffect: {fileID: 100024, guid: de670bf93ae4bb04bbfb3e04751e679d, type: 3}
   _ReHpBall: {fileID: 1617481073320506, guid: 4d72a4ceba550bc42a5d36ae0e9e848d, type: 3}
+  CheckHitLayer:
+    serializedVersion: 2
+    m_Bits: 65
   goblinAnimState: 0
   _AudioSource: {fileID: 82032902860200388}
   _AttAudio: {fileID: 8300000, guid: 798780668fbdb6b45af010f3cd1ff512, type: 3}
   "_\u88AB\u6253\u64CA\u8072\u97F3": {fileID: 8300000, guid: c02faf67a4c62a54aa4be7987c1e920e,
     type: 3}
   _DeadAudio: {fileID: 8300000, guid: 1463f9a5b822ac8498f77c62532fcf70, type: 3}
-  "\u885D\u523A\u7279\u6548": {fileID: 0}
 --- !u!195 &195672005631910830
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -1610,7 +1610,7 @@ MonoBehaviour:
   AttackMin: 150
   MainCamera: {fileID: 0}
   Gravity: -15
-  HpMax: 300
+  HpMax: 750
   HP: 0
   EnergyMax: 250
   Energy: 0

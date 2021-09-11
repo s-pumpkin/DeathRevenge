@@ -10,6 +10,8 @@ public class HpBall : MonoBehaviour
     [Tooltip("延遲(??)開始移動")]
     public float 延遲 = 1f;
 
+    public int HpRe = 10;
+
     // Use this for initialization
     void Start()
     {
@@ -27,5 +29,13 @@ public class HpBall : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerCtr.Instance.HP += HpRe;
+            Destroy(gameObject);
+        }
+    }
 
 }

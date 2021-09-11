@@ -21,14 +21,11 @@ public class GoblinCtr : characterBase
     /// <summary>
     /// 與玩家的距離 
     /// </summary>
-    public float distance;
+    private float distance = 99999;
     public float checkPlayerDistance;
 
-    /// <summary>
-    /// 手動准許功能
-    /// </summary>
     [Header("手動准許功能")]
-    private bool CanPatrol = true;
+    public bool CanPatrol = true;
     public bool CanBump = true;
     public bool CanRunPlayer = true;
 
@@ -45,13 +42,13 @@ public class GoblinCtr : characterBase
     /// 近戰攻擊
     /// </summary>
     bool isAttack1 = true;
-    public float SwingDistance; // 小於距離2使用揮打
+    public float SwingDistance;
 
     /// <summary>
     /// 衝刺
     /// </summary>
     // public float Speed = 15f;
-    public float CheckbumpDistance = 100; // 玩家小於距離1使用衝撞
+    public float CheckbumpDistance = 100;
     public float 衝撞CD = 30.0f;
     private float reCD;
     public float BumpSpeed = 5f;
@@ -71,7 +68,7 @@ public class GoblinCtr : characterBase
     public GameObject bloodEffect;
     public GameObject _ReHpBall;
 
-
+    public LayerMask CheckHitLayer;
     /// <summary>
     ///  動畫控制
     /// </summary>
@@ -88,10 +85,16 @@ public class GoblinCtr : characterBase
     public AudioClip _被打擊聲音;
     public AudioClip _DeadAudio;
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, checkPlayerDistance);
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, SwingDistance);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, CheckbumpDistance);
     }
 
     private void Awake()
@@ -168,11 +171,12 @@ public class GoblinCtr : characterBase
     {
         while (!isDead)
         {
-            RaycastHit hitInfo;
-            Vector3 direction = PlayerTr.position - this.gameObject.transform.position;
-            if (Physics.Raycast(transform.position, direction, out hitInfo, checkPlayerDistance))
+            RaycastHit hit;
+            Vector3 Dir = (new Vector3(PlayerTr.position.x, 0, PlayerTr.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized;
+            if (Physics.Raycast(transform.position + new Vector3(0, 3, 0), Dir, out hit, checkPlayerDistance, CheckHitLayer))
+            //if (Physics.CheckSphere(transform.position, checkPlayerDistance, PlayerLayer))
             {
-                if (hitInfo.transform == PlayerTr)
+                if (hit.transform.CompareTag("Player"))
                 {
                     distance = Vector3.Distance(transform.position, PlayerTr.position);
                     goblinState = GoblinState.runToPlayer;
@@ -183,6 +187,7 @@ public class GoblinCtr : characterBase
                     goblinState = GoblinState.None;
                 }
             }
+
 
             if (distance < SwingDistance)
             {
@@ -204,7 +209,7 @@ public class GoblinCtr : characterBase
 
         NvAgent.stoppingDistance = 0.1f;
 
-        if (goblinState == GoblinState.runToPlayer && CanRunPlayer)
+        if (goblinState == GoblinState.runToPlayer && CanRunPlayer || !CanPatrol)
         {
             NvAgent.SetDestination(PlayerTr.position);
         }
@@ -270,17 +275,19 @@ public class GoblinCtr : characterBase
         }
     }
 
+    float bumpTime = 5;
     IEnumerator GoblinBump(Vector3 target)
     {
         while (!isDead)
         {
+            bumpTime -= Time.deltaTime;
             float newPosDis = Vector3.Distance(transform.position, target);
-            if (newPosDis < 0.2f || hirWall)
+            if (newPosDis < 0.2f || hirWall || bumpTime <= 0)
             {
                 hirWall = false;
                 衝撞Object.SetActive(false);
                 goblinAnimState = GoblinAnimState.idel;
-
+                bumpTime = 5;
                 goblinState = GoblinState.None;
 
                 StartCoroutine(BumpCD());
@@ -321,7 +328,7 @@ public class GoblinCtr : characterBase
         isDead = true;
         gameObject.GetComponent<CapsuleCollider>().enabled = false;
 
-        _AudioSource.PlayOneShot(_DeadAudio);
+        AudioPlay(_DeadAudio);
         animator.SetTrigger("Dead");
         if (LevelCtr.instance != null)
             LevelCtr.instance.RemoveMonster(this.gameObject);
@@ -352,7 +359,7 @@ public class GoblinCtr : characterBase
 
     void attaudio()
     {
-        _AudioSource.PlayOneShot(_AttAudio);
+        AudioPlay(_AttAudio);
     }
 
     #region 傷害&受傷
